@@ -8,7 +8,10 @@ TEXT = """Listen. The ritual is ready, the eclipse is Tuesday, the armies are â€
 MAX_CHARS = 600
 
 def main():
+    # The bounty wants a villain monologue of about 100 words (and under 600 chars); a wrong word count scores zero, so check both before writing.
     assert 1 <= len(TEXT) <= MAX_CHARS, f"entry must be 1-{MAX_CHARS} chars, got {len(TEXT)}"
+    words = len(TEXT.split())
+    assert 90 <= words <= 110, f"entry must be about 100 words, got {words}"
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(TEXT)
